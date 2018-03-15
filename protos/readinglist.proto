@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package readinglist;
+
+service ReadingList{
+  rpc SetReadingList(stream Book) returns (ServerMessage){}
+  rpc GetReadingList(SpecialRequest) returns (stream Book){}
+  rpc AddBook(Book) returns (ServerMessage){}
+  rpc RemoveBook(Book) returns (ServerMessage){}
+  rpc GetReadBooks(SpecialRequest) returns (stream Book){}
+}
+
+message Book{
+  string title = 1;
+  string author = 2;
+  bool read = 3;
+}
+
+message ServerMessage{
+  string message = 1;
+}
+
+message SpecialRequest{
+
+}
